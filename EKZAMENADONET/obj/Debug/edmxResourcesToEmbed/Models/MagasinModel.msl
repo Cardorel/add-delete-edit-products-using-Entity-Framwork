@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MagasineModelStoreContainer" CdmEntityContainer="MagasineEntities">
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="MagasineModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+          <ScalarProperty Name="categoryTitle" ColumnName="categoryTitle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Characteristics">
+      <EntityTypeMapping TypeName="MagasineModel.Characteristic">
+        <MappingFragment StoreEntitySet="Characteristic">
+          <ScalarProperty Name="characteristicId" ColumnName="characteristicId" />
+          <ScalarProperty Name="characteristicTitle" ColumnName="characteristicTitle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Goods">
+      <EntityTypeMapping TypeName="MagasineModel.Good">
+        <MappingFragment StoreEntitySet="Goods">
+          <ScalarProperty Name="goodId" ColumnName="goodId" />
+          <ScalarProperty Name="goodTitle" ColumnName="goodTitle" />
+          <ScalarProperty Name="producer" ColumnName="producer" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="characteristicId" ColumnName="characteristicId" />
+          <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

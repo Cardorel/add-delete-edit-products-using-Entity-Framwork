@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MagasineModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="categoryId" />
+    </Key>
+    <Property Name="categoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="categoryTitle" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Characteristic">
+    <Key>
+      <PropertyRef Name="characteristicId" />
+    </Key>
+    <Property Name="characteristicId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="characteristicTitle" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Goods">
+    <Key>
+      <PropertyRef Name="goodId" />
+    </Key>
+    <Property Name="goodId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="goodTitle" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="producer" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="photo" Type="varbinary(max)" />
+    <Property Name="characteristicId" Type="int" Nullable="false" />
+    <Property Name="categoryId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Goods__categoryI__29572725">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="Goods" Type="Self.Goods" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="categoryId" />
+      </Principal>
+      <Dependent Role="Goods">
+        <PropertyRef Name="categoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Goods__character__286302EC">
+    <End Role="Characteristic" Type="Self.Characteristic" Multiplicity="1" />
+    <End Role="Goods" Type="Self.Goods" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Characteristic">
+        <PropertyRef Name="characteristicId" />
+      </Principal>
+      <Dependent Role="Goods">
+        <PropertyRef Name="characteristicId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MagasineModelStoreContainer">
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Characteristic" EntityType="Self.Characteristic" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Goods" EntityType="Self.Goods" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Goods__categoryI__29572725" Association="Self.FK__Goods__categoryI__29572725">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Goods" EntitySet="Goods" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Goods__character__286302EC" Association="Self.FK__Goods__character__286302EC">
+      <End Role="Characteristic" EntitySet="Characteristic" />
+      <End Role="Goods" EntitySet="Goods" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
